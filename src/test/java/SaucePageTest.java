@@ -47,7 +47,7 @@ public class SaucePageTest {
 
     @Test
     @Order(2)
-    public void loginWithCorrectCredentials() {
+    public void loginWithCorrectCredentials() throws InterruptedException {
         driver.get(sut);
         WebElement username = driver.findElement(By.id("user-name"));
         username.sendKeys("standard_user");
@@ -58,8 +58,30 @@ public class SaucePageTest {
         WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
 
+        WebElement menuButton = driver.findElement(By.id("react-burger-menu-btn"));
+        menuButton.click();
+        TimeUnit.SECONDS.sleep(1);
 
+        WebElement logoutButtonIsVissible = driver.findElement(By.id("logout_sidebar_link"));
+        Assertions.assertThat(logoutButtonIsVissible.isDisplayed()).isTrue();
     }
 
 
+    @Test
+    @Order(2)
+    public void loginWithIncorrectPassword() throws InterruptedException {
+        driver.get(sut);
+        WebElement username = driver.findElement(By.id("user-name"));
+        username.sendKeys("standard_user");
+
+        WebElement password = driver.findElement(By.id("password"));
+        password.sendKeys("invalidPassword");
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
+
+        WebElement incorrectPasswordBanner = driver.findElement(By.cssSelector(".error-message-container"));
+        Assertions.assertThat(incorrectPasswordBanner.isDisplayed()).isTrue();
+        Assertions.assertThat(incorrectPasswordBanner.getText()).contains("Username and password do not match any user in this service");
+
+    }
 }
