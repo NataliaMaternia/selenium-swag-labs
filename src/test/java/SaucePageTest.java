@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SaucePageTest {
 
@@ -40,7 +42,7 @@ public class SaucePageTest {
         driver.get(sut);
         String expectedUrl = "https://www.saucedemo.com/";
         String currenrUrl = driver.getCurrentUrl();
-        Assertions.assertThat(currenrUrl)
+        assertThat(currenrUrl)
                 .as("url address error").isEqualTo(expectedUrl);
         System.out.println("test 1 finished");
     }
@@ -63,7 +65,7 @@ public class SaucePageTest {
         TimeUnit.SECONDS.sleep(1);
 
         WebElement logoutButtonIsVissible = driver.findElement(By.id("logout_sidebar_link"));
-        Assertions.assertThat(logoutButtonIsVissible.isDisplayed()).isTrue();
+        assertThat(logoutButtonIsVissible.isDisplayed()).isTrue();
     }
 
 
@@ -80,8 +82,8 @@ public class SaucePageTest {
         loginButton.click();
 
         WebElement incorrectPasswordBanner = driver.findElement(By.cssSelector(".error-message-container"));
-        Assertions.assertThat(incorrectPasswordBanner.isDisplayed()).isTrue();
-        Assertions.assertThat(incorrectPasswordBanner.getText()).contains("Username and password do not match any user in this service");
+        assertThat(incorrectPasswordBanner.isDisplayed()).isTrue();
+        assertThat(incorrectPasswordBanner.getText()).contains("Username and password do not match any user in this service");
 
     }
 }
