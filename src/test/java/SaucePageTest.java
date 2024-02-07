@@ -2,8 +2,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SaucePageTest {
 
