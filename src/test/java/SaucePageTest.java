@@ -49,10 +49,11 @@ public class SaucePageTest {
 
     @Test
     @Order(4)
-    public void clickOnProducts ()  {
+    public void clickOnProductsAndBack () throws InterruptedException {
         loginPage.loginWithCorrectCredentials();
-
-
+        mainPage.clickOnProductsAndBack();
     }
+
+
 
 }

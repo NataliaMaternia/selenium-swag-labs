@@ -45,6 +45,5 @@ public class LoginPage {
         assertThat(incorrectPasswordBanner.isDisplayed()).isTrue();
         assertThat(incorrectPasswordBanner.getText())
                 .contains("Username and password do not match any user in this service");
-
     }
 }
