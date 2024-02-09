@@ -34,15 +34,31 @@ public class MainPage {
         }
     }
 
-    private WebElement getProductLinkByPositionInList(int positionOfProduct) {
+    public void addAllProductstoCart() throws InterruptedException {
+        List<WebElement> cardList = driver.findElements(By.cssSelector(".pricebar button"));
+        for (WebElement x : cardList) {
+            x.click();
+        }
+        TimeUnit.SECONDS.sleep(10);
+    }
+
+    public void productIsVissibleinCartAfterAdding() throws InterruptedException {
+        WebElement firstProduct = driver.findElement(By.cssSelector(".inventory_item_name"));
+        firstProduct.click();
+        WebElement clickCart = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+        clickCart.click();
+        TimeUnit.SECONDS.sleep(10);
+    }
+
+
+    public WebElement getProductLinkByPositionInList(int positionOfProduct) {
         String selectorForProductLinkByPosition =
                 "div.inventory_item:nth-child(" + positionOfProduct + ") a";
         WebElement productLink = driver.findElement(By.cssSelector(selectorForProductLinkByPosition));
         return productLink;
     }
-
-
 }
+
 
 
 

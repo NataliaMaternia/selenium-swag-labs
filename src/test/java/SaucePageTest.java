@@ -30,7 +30,7 @@ public class SaucePageTest {
     @Test
     @Order(1)
     public void verifyUrlAfterOpenMainPage() {
-    loginPage.loginWithIncorrectPassword();
+        loginPage.loginWithIncorrectPassword();
     }
 
     @Test
@@ -40,6 +40,7 @@ public class SaucePageTest {
         loginPage.loginWithCorrectCredentials();
         mainPage.checkLogoutButtonIsVissible();
     }
+
     @Test
     @Order(3)
     public void loginWithIncorrectPassword() {
@@ -49,11 +50,25 @@ public class SaucePageTest {
 
     @Test
     @Order(4)
-    public void clickOnProductsAndBack () throws InterruptedException {
+    public void clickOnProductsAndBack() throws InterruptedException {
         loginPage.loginWithCorrectCredentials();
         mainPage.clickOnProductsAndBack();
     }
 
+    @Test
+    @Order(5)
+    public void addProductstoCart() throws InterruptedException {
+        loginPage.loginWithCorrectCredentials();
+        mainPage.addAllProductstoCart();
+    }
 
+    @Test
+    @Order(6)
+    public void productIsVissibleinCartAfterAdding() throws InterruptedException {
+        loginPage.loginWithCorrectCredentials();
+        mainPage.productIsVissibleinCartAfterAdding();
+
+
+    }
 
 }
