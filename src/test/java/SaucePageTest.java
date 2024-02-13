@@ -8,6 +8,9 @@ public class SaucePageTest {
     private WebDriver driver;
     private LoginPage loginPage;
     private MainPage mainPage;
+    private ProductPage productPage;
+    private CheckoutPage checkoutPage;
+    private CartPage cartPage;
 
     @BeforeAll
     static void setupClass() {
@@ -19,6 +22,9 @@ public class SaucePageTest {
         driver = WebDriverManager.chromedriver().create();
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
+        productPage = new ProductPage(driver);
+        checkoutPage = new CheckoutPage(driver);
+        cartPage = new CartPage(driver);
     }
 
     @AfterEach
@@ -67,8 +73,30 @@ public class SaucePageTest {
     public void productIsVissibleinCartAfterAdding() throws InterruptedException {
         loginPage.loginWithCorrectCredentials();
         mainPage.productIsVissibleinCartAfterAdding();
-
-
     }
 
+    @Test
+    @Order(7)
+    public void removeProductFromCart() throws InterruptedException {
+        loginPage.loginWithCorrectCredentials();
+        mainPage.productIsVissibleinCartAfterAdding();
+        productPage.removeProductFromCart();
+    }
+
+    @Test
+    @Order(8)
+    public void clickCheckoutButton() throws InterruptedException {
+        loginPage.loginWithCorrectCredentials();
+        cartPage.clickCartButton();
+        checkoutPage.clickCheckoutButton();
+    }
+
+    @Test
+    @Order(9)
+    public void fillUserInformation() throws InterruptedException {
+        loginPage.loginWithCorrectCredentials();
+        cartPage.clickCartButton();
+        checkoutPage.clickCheckoutButton();
+        checkoutPage.fillUserInformation();
+    }
 }

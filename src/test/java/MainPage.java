@@ -28,8 +28,7 @@ public class MainPage {
             WebElement productLink = getProductLinkByPositionInList(x);
             productLink.click();
             TimeUnit.SECONDS.sleep(1);
-            WebElement backButton = driver.findElement(By.id("back-to-products"));
-            backButton.click();
+            new ProductPage(driver).backButton();
             TimeUnit.SECONDS.sleep(1);
         }
     }
@@ -47,7 +46,7 @@ public class MainPage {
         firstProduct.click();
         WebElement clickCart = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
         clickCart.click();
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(2);
     }
 
 
