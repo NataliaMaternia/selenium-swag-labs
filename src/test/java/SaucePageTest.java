@@ -7,8 +7,8 @@ import io.qameta.allure.Feature;
 import java.time.Duration;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Epic("Epic na całą stronę")
-@Feature("Test scenariuszy E2E")
+@Epic("basic functionality")
+@Feature("Sauce Page Test")
 public class SaucePageTest {
 
     private WebDriver driver;
@@ -42,7 +42,7 @@ public class SaucePageTest {
     }
 
     @Test
-    @Description("Smoke test - czy strona działa")
+    @Description("verify url after open main page")
     @Order(1)
     public void verifyUrlAfterOpenMainPage() {
         loginPage.loginWithIncorrectPassword();
