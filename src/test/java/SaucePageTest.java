@@ -1,8 +1,14 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import java.time.Duration;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Epic("Epic na całą stronę")
+@Feature("Test scenariuszy E2E")
 public class SaucePageTest {
 
     private WebDriver driver;
@@ -12,14 +18,17 @@ public class SaucePageTest {
     private CheckoutPage checkoutPage;
     private CartPage cartPage;
 
+
+
     @BeforeAll
     static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
     }
 
     @BeforeEach
     void setup() {
         driver = WebDriverManager.chromedriver().create();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
         productPage = new ProductPage(driver);
@@ -29,11 +38,11 @@ public class SaucePageTest {
 
     @AfterEach
     void tearDown() throws InterruptedException {
-//        TimeUnit.SECONDS.sleep(5);
         driver.quit();
     }
 
     @Test
+    @Description("Smoke test - czy strona działa")
     @Order(1)
     public void verifyUrlAfterOpenMainPage() {
         loginPage.loginWithIncorrectPassword();

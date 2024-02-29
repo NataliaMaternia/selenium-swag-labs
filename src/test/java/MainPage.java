@@ -1,9 +1,11 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,11 +16,12 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public void checkLogoutButtonIsVissible() throws InterruptedException {
+    public void checkLogoutButtonIsVissible() {
         WebElement menuButton = driver.findElement(By.id("react-burger-menu-btn"));
         menuButton.click();
-        TimeUnit.SECONDS.sleep(1);
-        WebElement logoutButtonIsVissible = driver.findElement(By.id("logout_sidebar_link"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement logoutButtonIsVissible = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.id("logout_sidebar_link")));
         assertThat(logoutButtonIsVissible.isDisplayed()).isTrue();
     }
 
@@ -27,9 +30,7 @@ public class MainPage {
         for (int x = 1; x <= productList.size(); x++) {
             WebElement productLink = getProductLinkByPositionInList(x);
             productLink.click();
-            TimeUnit.SECONDS.sleep(1);
             new ProductPage(driver).backButton();
-            TimeUnit.SECONDS.sleep(1);
         }
     }
 
@@ -38,7 +39,6 @@ public class MainPage {
         for (WebElement x : cardList) {
             x.click();
         }
-        TimeUnit.SECONDS.sleep(10);
     }
 
     public void productIsVissibleinCartAfterAdding() throws InterruptedException {
@@ -46,7 +46,6 @@ public class MainPage {
         firstProduct.click();
         WebElement clickCart = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
         clickCart.click();
-        TimeUnit.SECONDS.sleep(2);
     }
 
 

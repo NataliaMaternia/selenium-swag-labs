@@ -21,11 +21,9 @@ public class CheckoutPage {
         lastName.sendKeys("Kowalski");
         WebElement zipCode = driver.findElement(By.id("postal-code"));
         zipCode.sendKeys("50-100");
-        WebElement contineButton = driver.findElement(By.id("continue"));
-
-
+        WebElement continueButton = driver.findElement(By.id("continue"));
+        continueButton.click();
     }
-
 }
 
 

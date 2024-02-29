@@ -2,8 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.concurrent.TimeUnit;
-
 public class ProductPage {
 
     private WebDriver driver;
@@ -13,10 +11,10 @@ public class ProductPage {
     }
 
 
+
     public void backButton() throws InterruptedException {
         WebElement backButton = driver.findElement(By.id("back-to-products"));
         backButton.click();
-        TimeUnit.SECONDS.sleep(1);
     }
 
     public void removeProductFromCart() {
