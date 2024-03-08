@@ -41,7 +41,7 @@ public class MainPage {
         }
     }
 
-    public void productIsVissibleinCartAfterAdding() throws InterruptedException {
+    public void productIsVisibleInCartAfterAdding() {
         WebElement firstProduct = driver.findElement(By.cssSelector(".inventory_item_name"));
         firstProduct.click();
         WebElement clickCart = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));

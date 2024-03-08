@@ -51,61 +51,90 @@ public class SaucePageTest {
     @Test
     @Order(2)
     public void loginWithCorrectCredentials() throws InterruptedException {
+        // given
         loginPage.verifyUrlAfterOpenMainPage();
+        // when
         loginPage.loginWithCorrectCredentials();
+        // then
         mainPage.checkLogoutButtonIsVissible();
     }
 
     @Test
     @Order(3)
     public void loginWithIncorrectPassword() {
+        // when
         loginPage.loginWithIncorrectPassword();
+        // then
         loginPage.checkIncorrectPasswordBannerIsDisplayed();
     }
 
     @Test
     @Order(4)
     public void clickOnProductsAndBack() throws InterruptedException {
+        // given
         loginPage.loginWithCorrectCredentials();
+        // when
         mainPage.clickOnProductsAndBack();
+        // then
+        // TODO check if more than 2 products were successfully verified
     }
 
     @Test
     @Order(5)
     public void addProductstoCart() throws InterruptedException {
+        // given
         loginPage.loginWithCorrectCredentials();
+        // when
         mainPage.addAllProductstoCart();
+        // then
+        // no exception thrown
     }
 
     @Test
     @Order(6)
     public void productIsVissibleinCartAfterAdding() throws InterruptedException {
+        // given
         loginPage.loginWithCorrectCredentials();
-        mainPage.productIsVissibleinCartAfterAdding();
+        // when
+        mainPage.productIsVisibleInCartAfterAdding();
+        // then
+        // TODO add assertion
     }
 
     @Test
     @Order(7)
     public void removeProductFromCart() throws InterruptedException {
+        // given
         loginPage.loginWithCorrectCredentials();
-        mainPage.productIsVissibleinCartAfterAdding();
+        mainPage.productIsVisibleInCartAfterAdding();
+        // when
         productPage.removeProductFromCart();
+        // then
+        // TODO add assertion
     }
 
     @Test
     @Order(8)
     public void clickCheckoutButton() throws InterruptedException {
+        // given
         loginPage.loginWithCorrectCredentials();
         cartPage.clickCartButton();
+        // when
         checkoutPage.clickCheckoutButton();
+        // then
+        // TODO add assertion
     }
 
     @Test
     @Order(9)
     public void fillUserInformation() throws InterruptedException {
+        // given
         loginPage.loginWithCorrectCredentials();
         cartPage.clickCartButton();
         checkoutPage.clickCheckoutButton();
+        // when
         checkoutPage.fillUserInformation();
+        // then
+        // TODO add assertion
     }
 }
