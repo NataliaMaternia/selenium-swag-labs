@@ -1,3 +1,4 @@
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,8 +19,9 @@ public class ProductPage {
     }
 
     public void removeProductFromCart() {
-        WebElement removeButton = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
-        removeButton.click();
+        WebElement button = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+        Assertions.assertThat(button.getText()).contains("Remove");
+        button.click();
     }
 
 }
