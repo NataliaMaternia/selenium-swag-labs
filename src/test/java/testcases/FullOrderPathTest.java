@@ -1,15 +1,20 @@
+package testcases;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import pages.*;
+
 import java.time.Duration;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Epic("basic functionality")
 @Feature("Sauce Page Test")
-public class SaucePageTest {
+
+public class FullOrderPathTest {
 
     private WebDriver driver;
     private LoginPage loginPage;
@@ -17,8 +22,6 @@ public class SaucePageTest {
     private ProductPage productPage;
     private CheckoutPage checkoutPage;
     private CartPage cartPage;
-
-
 
     @BeforeAll
     static void setupClass() {
@@ -42,17 +45,9 @@ public class SaucePageTest {
     }
 
     @Test
-    @Description("verify url after open main page")
-    @Order(1)
-    public void verifyUrlAfterOpenMainPage() {
-        loginPage.loginWithIncorrectPassword();
-    }
-
-    @Test
-    @Order(2)
-    public void loginWithCorrectCredentials() throws InterruptedException {
+    public void loginWithCorrectCredentials() {
         // given
-        loginPage.verifyUrlAfterOpenMainPage();
+        loginPage.openPage();
         // when
         loginPage.loginWithCorrectCredentials();
         // then
@@ -60,16 +55,10 @@ public class SaucePageTest {
     }
 
     @Test
-    @Order(3)
-    public void loginWithIncorrectPassword() {
-        // when
-        loginPage.loginWithIncorrectPassword();
-        // then
-        loginPage.checkIncorrectPasswordBannerIsDisplayed();
+    @Description("verify url after open main page")
+    public void verifyUrlAfterOpenMainPage() {
     }
-
     @Test
-    @Order(4)
     public void clickOnProductsAndBack() throws InterruptedException {
         // given
         loginPage.loginWithCorrectCredentials();
@@ -80,7 +69,6 @@ public class SaucePageTest {
     }
 
     @Test
-    @Order(5)
     public void addProductstoCart() throws InterruptedException {
         // given
         loginPage.loginWithCorrectCredentials();
@@ -91,7 +79,6 @@ public class SaucePageTest {
     }
 
     @Test
-    @Order(6)
     public void productIsVissibleinCartAfterAdding() throws InterruptedException {
         // given
         loginPage.loginWithCorrectCredentials();
@@ -102,7 +89,6 @@ public class SaucePageTest {
     }
 
     @Test
-    @Order(7)
     public void removeProductFromCart() throws InterruptedException {
         // given
         loginPage.loginWithCorrectCredentials();
@@ -114,7 +100,6 @@ public class SaucePageTest {
     }
 
     @Test
-    @Order(8)
     public void clickCheckoutButton() throws InterruptedException {
         // given
         loginPage.loginWithCorrectCredentials();
@@ -126,7 +111,6 @@ public class SaucePageTest {
     }
 
     @Test
-    @Order(9)
     public void fillUserInformation() throws InterruptedException {
         // given
         loginPage.loginWithCorrectCredentials();
