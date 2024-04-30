@@ -36,11 +36,19 @@ public class LoginPageTest {
     }
 
     @Test
+    public void verifyUrlAfterOpenPage() {
+        // when
+        loginPage.openPage();
+        // then
+        loginPage.verifyUrlAfterOpenPage();
+    }
+    @Test
     public void loginWithCorrectCredentials() {
         // given
         loginPage.openPage();
         // when
         loginPage.loginWithCorrectCredentials();
+        loginPage.clickSignInButton();
         // then
         mainPage.checkLogoutButtonIsVissible();
     }
@@ -50,8 +58,8 @@ public class LoginPageTest {
         loginPage.openPage();
         // when
         loginPage.loginWithIncorrectPassword();
+        loginPage.clickSignInButton();
         // then
         loginPage.checkIncorrectPasswordBannerIsDisplayed();
     }
-
 }

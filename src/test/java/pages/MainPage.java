@@ -27,6 +27,19 @@ public class MainPage {
         assertThat(logoutButtonIsVissible.isDisplayed()).isTrue();
     }
 
+    public void verifyIfProductsElementIsVisible() {
+        WebElement productsElement = driver.findElement(By.cssSelector("title"));
+        String productsElementText = productsElement.getText();
+        assertThat(productsElementText.contains("Products")).isTrue();
+    }
+
+
+    public void clickOnFirstProduct() {
+        List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_label a"));
+        WebElement firstProduct = productList.get(0);
+        firstProduct.click();
+    }
+
     public void clickOnProductsAndBack() throws InterruptedException {
         List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_label a"));
         for (int x = 1; x <= productList.size(); x++) {
@@ -49,7 +62,6 @@ public class MainPage {
         WebElement clickCart = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
         clickCart.click();
     }
-
 
     public WebElement getProductLinkByPositionInList(int positionOfProduct) {
         String selectorForProductLinkByPosition =

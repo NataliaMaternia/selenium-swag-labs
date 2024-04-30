@@ -14,16 +14,26 @@ public class LoginPage {
         this.driver = driver;
     }
 
+    public void openPageAndCorrectlyLogin() {
+        openPage();
+        loginWithCorrectCredentials();
+        clickSignInButton();
+    }
+
     public void openPage() {
         driver.get(PAGE_ADDRESS);
     }
 
-    public void verifyUrlAfterOpenMainPage() {
-        driver.get(PAGE_ADDRESS);
+    public void verifyUrlAfterOpenPage() {
         String expectedUrl = "https://www.saucedemo.com/";
         String currenrUrl = driver.getCurrentUrl();
         assertThat(currenrUrl)
                 .as("url address error").isEqualTo(expectedUrl);
+    }
+
+    public void clickSignInButton(){
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+        loginButton.click();
     }
 
     public void loginWithCorrectCredentials() {
@@ -31,8 +41,6 @@ public class LoginPage {
         username.sendKeys("standard_user");
         WebElement password = driver.findElement(By.id("password"));
         password.sendKeys("secret_sauce");
-        WebElement loginButton = driver.findElement(By.id("login-button"));
-        loginButton.click();
     }
 
     public void loginWithIncorrectPassword() {
@@ -40,8 +48,6 @@ public class LoginPage {
         username.sendKeys("standard_user");
         WebElement password = driver.findElement(By.id("password"));
         password.sendKeys("invalidPassword");
-        WebElement loginButton = driver.findElement(By.id("login-button"));
-        loginButton.click();
     }
 
     public void checkIncorrectPasswordBannerIsDisplayed() {
