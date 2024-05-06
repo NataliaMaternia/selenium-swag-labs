@@ -17,6 +17,7 @@ public class MainPageTest {
     private WebDriver driver;
     private LoginPage loginPage;
     private MainPage mainPage;
+    private ProductPage productPage;
 
     @BeforeAll
     static void setupClass() {
@@ -29,7 +30,7 @@ public class MainPageTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
-        loginPage.openPageAndCorrectlyLogin();
+        productPage = new ProductPage(driver);
     }
     @AfterEach
     void tearDown() throws InterruptedException {
@@ -37,12 +38,14 @@ public class MainPageTest {
     }
 
     @Test
-    public void clickOnProductsAndBack() {
+    public void clickOnFirstProductAndBack() throws InterruptedException {
         // when
+        loginPage.openPageAndCorrectlyLogin();
+        // then
         mainPage.clickOnFirstProduct();
+        productPage.clickBackButton();
         // then
         mainPage.verifyIfProductsElementIsVisible();
-      // toDo backbutton
     }
 }
 

@@ -28,7 +28,7 @@ public class MainPage {
     }
 
     public void verifyIfProductsElementIsVisible() {
-        WebElement productsElement = driver.findElement(By.cssSelector("title"));
+        WebElement productsElement = driver.findElement(By.cssSelector(".title"));
         String productsElementText = productsElement.getText();
         assertThat(productsElementText.contains("Products")).isTrue();
     }
@@ -45,7 +45,7 @@ public class MainPage {
         for (int x = 1; x <= productList.size(); x++) {
             WebElement productLink = getProductLinkByPositionInList(x);
             productLink.click();
-            new ProductPage(driver).backButton();
+            new ProductPage(driver).clickBackButton();
         }
     }
 

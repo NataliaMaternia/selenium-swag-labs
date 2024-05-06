@@ -15,7 +15,7 @@ public class ProductPage {
 
 
 
-    public void backButton() throws InterruptedException {
+    public void clickBackButton() throws InterruptedException {
         WebElement backButton = driver.findElement(By.id("back-to-products"));
         backButton.click();
     }
