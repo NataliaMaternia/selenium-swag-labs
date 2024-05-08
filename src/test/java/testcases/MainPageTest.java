@@ -18,6 +18,7 @@ public class MainPageTest {
     private LoginPage loginPage;
     private MainPage mainPage;
     private ProductPage productPage;
+    private CartPage cartPage;
 
     @BeforeAll
     static void setupClass() {
@@ -31,6 +32,7 @@ public class MainPageTest {
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
         productPage = new ProductPage(driver);
+        cartPage = new CartPage(driver);
     }
     @AfterEach
     void tearDown() throws InterruptedException {
@@ -39,13 +41,26 @@ public class MainPageTest {
 
     @Test
     public void clickOnFirstProductAndBack() throws InterruptedException {
-        // when
+        // given
         loginPage.openPageAndCorrectlyLogin();
-        // then
+        // when
         mainPage.clickOnFirstProduct();
         productPage.clickBackButton();
         // then
         mainPage.verifyIfProductsElementIsVisible();
+    }
+
+    @Test
+    public void clickOnShoppingCart() {
+        // given
+        loginPage.openPageAndCorrectlyLogin();
+        // when
+        mainPage.clickOnShoppingCart();
+        // then
+        cartPage.verifyIfYourCartElementIsVisible();
+
+
+
     }
 }
 

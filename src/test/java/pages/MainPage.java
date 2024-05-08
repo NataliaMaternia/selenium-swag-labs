@@ -59,7 +59,12 @@ public class MainPage {
     public void productIsVisibleInCartAfterAdding() {
         WebElement firstProduct = driver.findElement(By.cssSelector(".inventory_item_name"));
         firstProduct.click();
-        WebElement clickCart = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+      //  WebElement clickCart = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+      //  clickCart.click();
+    }
+
+    public void clickOnShoppingCart() {
+        WebElement clickCart = driver.findElement(By.cssSelector(".shopping_cart_link"));
         clickCart.click();
     }
 
