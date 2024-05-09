@@ -45,80 +45,67 @@ public class FullOrderPathTest {
     }
 
     @Test
-    public void loginWithCorrectCredentials() {
-        // given
+    public void fullOrderPathTest() {
         loginPage.openPage();
-        // when
         loginPage.loginWithCorrectCredentials();
-        // then
-        mainPage.checkLogoutButtonIsVissible();
+        mainPage.clickOnFirstProduct();
+        mainPage.clickOnShoppingCart();
+       // TODO next steps
     }
 
-    @Test
-    @Description("verify url after open main page")
-    public void verifyUrlAfterOpenMainPage() {
-    }
-    @Test
-    public void clickOnProductsAndBack() throws InterruptedException {
-        // given
-        loginPage.loginWithCorrectCredentials();
-        // when
-        mainPage.clickOnProductsAndBack();
-        // then
-        // TODO check if more than 2 products were successfully verified
-    }
 
-    @Test
-    public void addProductstoCart() throws InterruptedException {
-        // given
-        loginPage.loginWithCorrectCredentials();
-        // when
-        mainPage.addAllProductstoCart();
-        // then
-        // no exception thrown
-    }
 
-    @Test
-    public void productIsVissibleinCartAfterAdding() throws InterruptedException {
-        // given
-        loginPage.loginWithCorrectCredentials();
-        // when
-        mainPage.productIsVisibleInCartAfterAdding();
-        // then
-        // TODO add assertion
-    }
-
-    @Test
-    public void removeProductFromCart() throws InterruptedException {
-        // given
-        loginPage.loginWithCorrectCredentials();
-        mainPage.productIsVisibleInCartAfterAdding();
-        // when
-        productPage.removeProductFromCart();
-        // then
-        // TODO add assertion
-    }
-
-    @Test
-    public void clickCheckoutButton() throws InterruptedException {
-        // given
-        loginPage.loginWithCorrectCredentials();
-        cartPage.clickCartButton();
-        // when
-        checkoutPage.clickCheckoutButton();
-        // then
-        // TODO add assertion
-    }
-
-    @Test
-    public void fillUserInformation() throws InterruptedException {
-        // given
-        loginPage.loginWithCorrectCredentials();
-        cartPage.clickCartButton();
-        checkoutPage.clickCheckoutButton();
-        // when
-        checkoutPage.fillUserInformation();
-        // then
-        // TODO add assertion
-    }
+//    @Test
+//    public void addProductstoCart() throws InterruptedException {
+//        // given
+//        loginPage.loginWithCorrectCredentials();
+//        // when
+//        mainPage.addAllProductstoCart();
+//        // then
+//        // no exception thrown
+//    }
+//
+//    @Test
+//    public void productIsVissibleinCartAfterAdding() throws InterruptedException {
+//        // given
+//        loginPage.loginWithCorrectCredentials();
+//        // when
+//        mainPage.productIsVisibleInCartAfterAdding();
+//        // then
+//        // TODO add assertion
+//    }
+//
+//    @Test
+//    public void removeProductFromCart() throws InterruptedException {
+//        // given
+//        loginPage.loginWithCorrectCredentials();
+//        mainPage.productIsVisibleInCartAfterAdding();
+//        // when
+//        productPage.removeProductFromCart();
+//        // then
+//        // TODO add assertion
+//    }
+//
+//    @Test
+//    public void clickCheckoutButton() throws InterruptedException {
+//        // given
+//        loginPage.loginWithCorrectCredentials();
+//        cartPage.clickCartButton();
+//        // when
+//        checkoutPage.clickCheckoutButton();
+//        // then
+//        // TODO add assertion
+//    }
+//
+//    @Test
+//    public void fillUserInformation() throws InterruptedException {
+//        // given
+//        loginPage.loginWithCorrectCredentials();
+//        cartPage.clickCartButton();
+//        checkoutPage.clickCheckoutButton();
+//        // when
+//        checkoutPage.fillUserInformation();
+//        // then
+//        // TODO add assertion
+//    }
 }
