@@ -50,6 +50,8 @@ public class FullOrderPathTest {
         loginPage.loginWithCorrectCredentials();
         mainPage.clickOnFirstProduct();
         mainPage.clickOnShoppingCart();
+        cartPage.clickOnCheckoutButton();
+
        // TODO next steps
     }
 

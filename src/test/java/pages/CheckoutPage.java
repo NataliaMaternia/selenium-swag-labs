@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class CheckoutPage {
     private WebDriver driver;
 
@@ -11,9 +13,10 @@ public class CheckoutPage {
         this.driver = driver;
     }
 
-    public void clickCheckoutButton() {
-        WebElement checkoutButton = driver.findElement(By.id("checkout"));
-        checkoutButton.click();
+    public void verifyIfcheckoutIsVisible() {
+        WebElement checkoutYourInformation = driver.findElement(By.cssSelector(".title"));
+        String productsElementText = checkoutYourInformation.getText();
+        assertThat(productsElementText.contains("Checkout: Your Information")).isTrue();
     }
 
     public void fillUserInformation() {

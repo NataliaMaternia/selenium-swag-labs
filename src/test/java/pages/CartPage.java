@@ -14,9 +14,14 @@ public class CartPage {
         this.driver = driver;
     }
 
-    public void clickCartButton() throws InterruptedException {
-        WebElement cartButton = driver.findElement(By.cssSelector(".shopping_cart_link"));
-        cartButton.click();
+    public void clickOnCheckoutButton() {
+        WebElement checkoutButton = driver.findElement(By.id("checkout"));
+        checkoutButton.click();
+    }
+
+    public void clickOnContinueShoppingButton() {
+        WebElement checkoutButton = driver.findElement(By.id("continue-shopping"));
+        checkoutButton.click();
     }
 
     public void verifyIfYourCartElementIsVisible() {
