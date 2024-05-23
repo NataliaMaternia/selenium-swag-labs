@@ -15,8 +15,8 @@ public class CheckoutPage {
 
     public void verifyIfcheckoutIsVisible() {
         WebElement checkoutYourInformation = driver.findElement(By.cssSelector(".title"));
-        String productsElementText = checkoutYourInformation.getText();
-        assertThat(productsElementText.contains("Checkout: Your Information")).isTrue();
+        String checkoutElementText = checkoutYourInformation.getText();
+        assertThat(checkoutElementText.contains("Checkout: Your Information")).isTrue();
     }
 
     public void fillUserInformation() {
@@ -26,8 +26,17 @@ public class CheckoutPage {
         lastName.sendKeys("Kowalski");
         WebElement zipCode = driver.findElement(By.id("postal-code"));
         zipCode.sendKeys("50-100");
+    }
+
+    public void clickContinueButton() {
         WebElement continueButton = driver.findElement(By.id("continue"));
         continueButton.click();
+    }
+
+    public void clickOnCancelButton() {
+        WebElement cancelButton = driver.findElement(By.id("cancel"));
+        cancelButton.click();
+
     }
 }
 
