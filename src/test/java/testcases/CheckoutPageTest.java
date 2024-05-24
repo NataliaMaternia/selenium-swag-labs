@@ -5,10 +5,7 @@ import org.junit.jupiter.api.*;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.openqa.selenium.WebDriver;
-import pages.CartPage;
-import pages.CheckoutPage;
-import pages.LoginPage;
-import pages.MainPage;
+import pages.*;
 
 import java.time.Duration;
 
@@ -22,6 +19,7 @@ public class CheckoutPageTest {
     private MainPage mainPage;
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
+    private OverviewPage overviewPage;
 
     @BeforeEach
     void setup() {
@@ -31,6 +29,7 @@ public class CheckoutPageTest {
         mainPage = new MainPage(driver);
         cartPage = new CartPage(driver);
         checkoutPage = new CheckoutPage(driver);
+        overviewPage = new OverviewPage(driver);
     }
     @AfterEach
     void tearDown() throws InterruptedException {
@@ -48,7 +47,8 @@ public class CheckoutPageTest {
         checkoutPage.fillUserInformation();
         checkoutPage.clickContinueButton();
         // then
-        //todo assert -> add overviewPage
+        overviewPage.verifyIfCheckoutOverviewIsVisible();
+
     }
 
     @Test
