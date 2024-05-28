@@ -15,6 +15,15 @@ public class OverviewPage {
         String productsElementText = overviewElement.getText();
         assertThat(productsElementText.contains("Checkout: Overview")).isTrue();
     }
+    public void clickOnCancelButton() {
+        WebElement cancelButton = driver.findElement(By.id("cancel"));
+        cancelButton.click();
+    }
+
+    public void clickOnFinishButton() {
+        WebElement finishButton = driver.findElement(By.id("finish"));
+        finishButton.click();
+    }
 
 }
 
