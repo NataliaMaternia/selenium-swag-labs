@@ -17,6 +17,11 @@ public class CompletePage {
         WebElement checkoutCompleteOrder = driver.findElement(By.cssSelector(".complete-header"));
         String orderElementText = checkoutCompleteOrder.getText();
         assertThat(orderElementText.contains("Thank you for your order!")).isTrue();
+    }
+
+    public void clickOnHomeButton() {
+        WebElement homeButton = driver.findElement(By.id("back-to-products"));
+        homeButton.click();
 
     }
 }

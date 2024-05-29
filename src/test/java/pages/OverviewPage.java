@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import static org.assertj.core.api.Assertions.assertThat;
 public class OverviewPage {
     private WebDriver driver;
-
     public OverviewPage(WebDriver driver) {
         this.driver = driver;
     }
