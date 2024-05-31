@@ -45,7 +45,7 @@ public class MainPage {
         for (int x = 1; x <= productList.size(); x++) {
             WebElement productLink = getProductLinkByPositionInList(x);
             productLink.click();
-            new ProductPage(driver).clickBackButton();
+            new ProductPage(driver).clickOnBackButton();
         }
     }
 
