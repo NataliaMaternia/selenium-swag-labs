@@ -39,8 +39,5 @@ public class ProductPage {
         WebElement button = driver.findElement(By.id("shopping_cart_container"));
         Assertions.assertThat(button.getText()).isEmpty();
     }
-
-
-
 }
 

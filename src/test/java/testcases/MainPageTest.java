@@ -59,5 +59,46 @@ public class MainPageTest {
         // then
         cartPage.verifyIfYourCartElementIsVisible();
     }
+
+    @Test
+    public void sortByNameAtoZ() {
+        // given
+        loginPage.openPageAndCorrectlyLogin();
+        // when
+        mainPage.sortByNameAtoZ();
+        // then
+        mainPage.verifyIfProductsAreSortedByNameAtoZ();
+    }
+
+    @Test
+    public void sortByNameZtoA() {
+        // given
+        loginPage.openPageAndCorrectlyLogin();
+        // when
+        mainPage.sortByNameZtoA();
+        // then
+        mainPage.verifyIfProductsAreSortedByNameZtoA();
+
+    }
+
+    @Test
+    public void sortByPriceLowToHigh() {
+        // given
+        loginPage.openPageAndCorrectlyLogin();
+        // when
+        mainPage.sortByPriceLowToHigh();
+        // then
+        mainPage.verifyIfProductsAreSortedByPriceLowToHigh();
+    }
+
+        @Test
+        public void sortByPriceHighToLow() {
+            // given
+            loginPage.openPageAndCorrectlyLogin();
+            // when
+            mainPage.sortByPriceHighToLow();
+            // then
+            mainPage.sortByPriceHighToLow();
+    }
 }
 

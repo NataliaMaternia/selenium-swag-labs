@@ -1,10 +1,13 @@
 package pages;
 
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
+
 
 import java.time.Duration;
 import java.util.List;
@@ -38,6 +41,60 @@ public class MainPage {
         List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_label a"));
         WebElement firstProduct = productList.get(0);
         firstProduct.click();
+    }
+
+    public void addFirstProductToCart() {
+        WebElement button = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+        Assertions.assertThat(button.getText()).contains("Add to cart");
+        button.click();
+    }
+
+    public void removeFirstProductFromCart() {
+        WebElement button = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+        Assertions.assertThat(button.getText()).contains("Remove");
+        button.click();
+    }
+
+    public void sortByNameAtoZ() {
+        Select selectSort = new Select(driver.findElement(By.cssSelector(".product_sort_container")));
+        selectSort.selectByValue("az");
+    }
+
+    public void sortByNameZtoA() {
+        Select selectSort = new Select(driver.findElement(By.cssSelector(".product_sort_container")));
+        selectSort.selectByValue("za");
+    }
+
+    public void sortByPriceLowToHigh() {
+        Select selectSort = new Select(driver.findElement(By.cssSelector(".product_sort_container")));
+        selectSort.selectByValue("lohi");
+    }
+
+    public void sortByPriceHighToLow() {
+        Select selectSort = new Select(driver.findElement(By.cssSelector(".product_sort_container")));
+        selectSort.selectByValue("hilo");
+    }
+
+    public void verifyIfProductsAreSortedByNameAtoZ() {
+        List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_name"));
+        String firstProduct = productList.get(0).getText();
+        assertThat(firstProduct.contains("Sauce Labs Backpack")).isTrue();
+    }
+    public void  verifyIfProductsAreSortedByNameZtoA() {
+        List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_name"));
+        String firstProduct = productList.get(0).getText();
+        assertThat(firstProduct.contains("T-Shirt (Red)")).isTrue();
+    }
+    public void verifyIfProductsAreSortedByPriceLowToHigh() {
+        List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_name"));
+        String firstProduct = productList.get(0).getText();
+        assertThat(firstProduct.contains("Sauce Labs Onesie")).isTrue();
+
+    }
+    public void verifyIfProductsAreSortedByPriceHighToLow() {
+        List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_name"));
+        String firstProduct = productList.get(0).getText();
+        assertThat(firstProduct.contains("Sauce Labs Fleece Jacket")).isTrue();
     }
 
     public void clickOnProductsAndBack() throws InterruptedException {
