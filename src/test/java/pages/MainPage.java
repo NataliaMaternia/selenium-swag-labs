@@ -44,13 +44,13 @@ public class MainPage {
     }
 
     public void addFirstProductToCart() {
-        WebElement button = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+        WebElement button = driver.findElement(By.cssSelector(".inventory_item_description button"));
         Assertions.assertThat(button.getText()).contains("Add to cart");
         button.click();
     }
 
-    public void removeFirstProductFromCart() {
-        WebElement button = driver.findElement(By.cssSelector(".inventory_details_desc_container button"));
+    public void removeProductFromCart() {
+        WebElement button = driver.findElement(By.cssSelector(".inventory_item_description button"));
         Assertions.assertThat(button.getText()).contains("Remove");
         button.click();
     }
@@ -97,16 +97,7 @@ public class MainPage {
         assertThat(firstProduct.contains("Sauce Labs Fleece Jacket")).isTrue();
     }
 
-    public void clickOnProductsAndBack() throws InterruptedException {
-        List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_label a"));
-        for (int x = 1; x <= productList.size(); x++) {
-            WebElement productLink = getProductLinkByPositionInList(x);
-            productLink.click();
-            new ProductPage(driver).clickOnBackButton();
-        }
-    }
-
-    public void addAllProductstoCart() throws InterruptedException {
+    public void addAllProductsToCart() throws InterruptedException {
         List<WebElement> cardList = driver.findElements(By.cssSelector(".pricebar button"));
         for (WebElement x : cardList) {
             x.click();

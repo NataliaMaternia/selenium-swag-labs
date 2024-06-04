@@ -19,6 +19,7 @@ public class MainPageTest {
     private MainPage mainPage;
     private ProductPage productPage;
     private CartPage cartPage;
+    private HeaderLabelPage headerLabelPage;
 
     @BeforeAll
     static void setupClass() {
@@ -33,6 +34,7 @@ public class MainPageTest {
         mainPage = new MainPage(driver);
         productPage = new ProductPage(driver);
         cartPage = new CartPage(driver);
+        headerLabelPage = new HeaderLabelPage(driver);
     }
     @AfterEach
     void tearDown() throws InterruptedException {
@@ -48,6 +50,28 @@ public class MainPageTest {
         productPage.clickOnBackButton();
         // then
         mainPage.verifyIfProductsElementIsVisible();
+    }
+
+
+    @Test
+    public void addProductToCartAtMainPage() {
+        // given
+        loginPage.openPageAndCorrectlyLogin();
+        // when
+        mainPage.addFirstProductToCart();
+        // then
+        headerLabelPage.checkIfShoppingCartIsNotEmpty();
+    }
+
+    @Test
+    public void removeProductFromCartAMainPage() {
+        // given
+        loginPage.openPageAndCorrectlyLogin();
+        mainPage.addFirstProductToCart();
+        // when
+        mainPage.removeProductFromCart();
+        // then
+        headerLabelPage.checkIfShoppingCartIsEmpty();
     }
 
     @Test
@@ -98,7 +122,7 @@ public class MainPageTest {
             // when
             mainPage.sortByPriceHighToLow();
             // then
-            mainPage.sortByPriceHighToLow();
+            mainPage.verifyIfProductsAreSortedByPriceHighToLow();
     }
 }
 

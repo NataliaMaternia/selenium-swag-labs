@@ -1,5 +1,6 @@
 package pages;
 
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,5 +57,12 @@ public class LoginPage {
         assertThat(incorrectPasswordBanner.isDisplayed()).isTrue();
         assertThat(incorrectPasswordBanner.getText())
                 .contains("Username and password do not match any user in this service");
+    }
+
+    public void checkIfSignInButtonIsVissible() {
+        WebElement signInButton = driver.findElement(By.id("login-button"));
+        assertThat(signInButton.isDisplayed()).isTrue();
+
+
     }
 }
