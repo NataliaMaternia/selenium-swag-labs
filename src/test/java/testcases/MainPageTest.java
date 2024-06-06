@@ -52,7 +52,6 @@ public class MainPageTest {
         mainPage.verifyIfProductsElementIsVisible();
     }
 
-
     @Test
     public void addProductToCartAtMainPage() {
         // given
@@ -61,6 +60,16 @@ public class MainPageTest {
         mainPage.addFirstProductToCart();
         // then
         headerLabelPage.checkIfShoppingCartIsNotEmpty();
+    }
+
+    @Test
+    public void addAllProductsToCart() {
+        // given
+        loginPage.openPageAndCorrectlyLogin();
+        // when
+        mainPage.addAllProductsToCart();
+        // then
+        mainPage.checkIfAllProductAreAddedToCart();
     }
 
     @Test

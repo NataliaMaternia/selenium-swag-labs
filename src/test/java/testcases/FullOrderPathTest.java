@@ -19,9 +19,11 @@ public class FullOrderPathTest {
     private WebDriver driver;
     private LoginPage loginPage;
     private MainPage mainPage;
-    private ProductPage productPage;
     private CheckoutPage checkoutPage;
     private CartPage cartPage;
+    private HeaderLabelPage headerLabelPage;
+    private OverviewPage overviewPage;
+
 
     @BeforeAll
     static void setupClass() {
@@ -34,9 +36,10 @@ public class FullOrderPathTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
-        productPage = new ProductPage(driver);
         checkoutPage = new CheckoutPage(driver);
         cartPage = new CartPage(driver);
+        headerLabelPage = new HeaderLabelPage(driver);
+        overviewPage = new OverviewPage(driver);
     }
 
     @AfterEach
@@ -48,11 +51,17 @@ public class FullOrderPathTest {
     public void fullOrderPathTest() {
         loginPage.openPage();
         loginPage.loginWithCorrectCredentials();
-        mainPage.clickOnFirstProduct();
+        mainPage.addFirstProductToCart();
+        headerLabelPage.checkIfShoppingCartIsNotEmpty();
         mainPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
+        checkoutPage.fillUserInformation();
+        checkoutPage.clickContinueButton();
+        overviewPage.clickOnFinishButton();
 
-       // TODO next steps
+
+
+
     }
 
 

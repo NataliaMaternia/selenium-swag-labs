@@ -97,23 +97,27 @@ public class MainPage {
         assertThat(firstProduct.contains("Sauce Labs Fleece Jacket")).isTrue();
     }
 
-    public void addAllProductsToCart() throws InterruptedException {
-        List<WebElement> cardList = driver.findElements(By.cssSelector(".pricebar button"));
-        for (WebElement x : cardList) {
+    public void addAllProductsToCart() {
+        List<WebElement> cartList = driver.findElements(By.cssSelector(".pricebar button"));
+        for (WebElement x : cartList) {
             x.click();
         }
     }
 
+    public void checkIfAllProductAreAddedToCart() {
+        List<WebElement> addToCartButtonsList = driver.findElements(By.cssSelector(".pricebar button"));
+        int allProductsCount = addToCartButtonsList.size();
+
+        WebElement cartContainer = driver.findElement(By.id("shopping_cart_container"));
+        int productsInCartCount = Integer.parseInt(cartContainer.getText());
+
+        assertThat(allProductsCount).isEqualTo(productsInCartCount);
+    }
+
+
     public void clickOnShoppingCart() {
         WebElement clickCart = driver.findElement(By.cssSelector(".shopping_cart_link"));
         clickCart.click();
-    }
-
-    public WebElement getProductLinkByPositionInList(int positionOfProduct) {
-        String selectorForProductLinkByPosition =
-                "div.inventory_item:nth-child(" + positionOfProduct + ") a";
-        WebElement productLink = driver.findElement(By.cssSelector(selectorForProductLinkByPosition));
-        return productLink;
     }
 }
 

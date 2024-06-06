@@ -32,7 +32,7 @@ public class CheckoutPageTest {
         overviewPage = new OverviewPage(driver);
     }
     @AfterEach
-    void tearDown() throws InterruptedException {
+    void tearDown()  {
         driver.quit();
     }
 
